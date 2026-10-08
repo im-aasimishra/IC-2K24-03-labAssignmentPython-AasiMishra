@@ -1,0 +1,19 @@
+# Section C: Programs to Write
+# 6. Escape Sequence Practice
+
+# Displaying a small bill using tab and newline escape sequences
+
+product1 = "Notebook"
+product2 = "Pen"
+product3 = "Water Bottle"
+
+print("Product\t\tPrice\t\tQuantity")
+print(product1, "\t\t80\t\t2")
+print(product2, "\t\t20\t\t5")
+print(product3, "\t250\t\t1")
+
+# Output:
+# Product         Price           Quantity
+# Notebook        80              2
+# Pen             20              5
+# Water Bottle    250             1

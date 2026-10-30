@@ -1,0 +1,400 @@
+# Activity: Time and Space Complexity Analysis
+
+For each program, determine its time complexity and space complexity using Big-O notation, along with a brief explanation.
+
+Program 1: Finding the Largest Element
+
+
+def largest_value(numbers):
+largest = numbers[0]
+for position in range(1, len(numbers)):
+current = numbers[position]
+if current > largest:
+largest = current
+return largest
+
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Explanation: The loop checks every element of the array once, so the execution time increases linearly with the input size. Only a fixed number of variables are required.
+
+Program 2: Checking for Duplicate Elements
+
+def contains_repeat(values):
+size = len(values)
+for first in range(size):
+for second in range(first + 1, size):
+if values[first] == values[second]:
+return True
+return False
+
+Time Complexity: O(n²)
+Space Complexity: O(1)
+
+Explanation: Each element is compared with the remaining elements using nested loops. In the worst case, this results in quadratic comparisons. No additional data structure is created.
+
+Program 3: Calculating the Sum of Digits
+
+
+def digit_total(number):
+if number == 0:
+return 0
+last_digit = number % 10
+remaining_number = number // 10
+return last_digit + digit_total(remaining_number)
+
+
+Time Complexity: O(log n)
+Space Complexity: O(log n)
+
+Explanation: Every recursive call removes one digit by dividing the number by 10. Therefore, the number of recursive calls depends on the number of digits. The recursion stack also requires logarithmic space.
+
+Program 4: Generating All Possible Pairs
+
+
+def create_pairs(items):
+size = len(items)
+pairs = []
+for row in range(size):
+for column in range(size):
+pairs.append((items[row], items[column]))
+return pairs
+
+
+Time Complexity: O(n²)
+Space Complexity: O(n²)
+
+Explanation: Both loops execute n times, generating n × n combinations. Since every pair is stored in a separate list, the required memory also grows quadratically.
+
+Program 5: Binary Search
+
+
+def locate_value(sorted_values, key):
+start = 0
+end = len(sorted_values) - 1
+while start <= end:
+middle = (start + end) // 2
+middle_value = sorted_values[middle]
+if middle_value == key:
+return middle
+if middle_value < key:
+start = middle + 1
+else:
+end = middle - 1
+return -1
+
+
+Time Complexity: O(log n)
+Space Complexity: O(1)
+
+Explanation: Binary search eliminates half of the remaining elements after every iteration. This reduces the number of operations to logarithmic time. Only a few variables are used, so extra space remains constant.
+
+Program 6: Matrix Multiplication
+
+def multiply_matrices(first_matrix, second_matrix):
+dimension = len(first_matrix)
+product = [[0 for _ in range(dimension)] for _ in range(dimension)]
+
+for row in range(dimension):
+for column in range(dimension):
+for index in range(dimension):
+product[row][column] += (
+first_matrix[row][index] * second_matrix[index][column]
+)
+
+return product
+
+
+Time Complexity: O(n³)
+Space Complexity: O(n²)
+
+Explanation: The program contains three nested loops, each running n times. This results in n³ operations. The resulting matrix contains n × n elements, requiring quadratic memory.
+
+Program 7: Converting a Matrix into Sparse Form
+
+def extract_nonzero_cells(grid):
+nonzero_items = []
+row_count = len(grid)
+column_count = len(grid[0])
+
+for row_index in range(row_count):
+for column_index in range(column_count):
+cell = grid[row_index][column_index]
+if cell != 0:
+nonzero_items.append((row_index, column_index, cell))
+
+return nonzero_items
+
+
+Time Complexity: O(m × n)
+Space Complexity: O(k)
+
+Explanation: Every matrix element is examined once, giving m × n operations for m rows and n columns. Only non-zero elements are stored, so the space requirement depends on k, the number of non-zero values.
+
+Program 8: Processing Elements and Their Pairs
+
+def display_items_and_pairs(data):
+length = len(data)
+
+for index in range(length):
+print(data[index])
+
+for first_index in range(length):
+for second_index in range(length):
+print(data[first_index], data[second_index])
+
+
+Time Complexity: O(n²)
+Space Complexity: O(1)
+
+Explanation: The first loop requires O(n) time, whereas the nested loops require O(n²) time. The larger complexity dominates the total execution time. No extra collection is created.
+
+Program 9: Checking Against the First Ten Integers
+
+
+def matches_small_number(sequence):
+for element in sequence:
+for candidate in range(10):
+if element == candidate:
+return True
+return False
+
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Explanation: The inner loop always checks a fixed number of ten values, making it a constant-time operation. Since the outer loop processes the entire array, the overall time complexity is linear.
+
+Program 10: Reversing an Array Using a New List
+
+
+def make_reversed_copy(source):
+output = []
+for index in range(len(source) - 1, -1, -1):
+output.append(source[index])
+return output
+
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Explanation: The program visits each element once in reverse order and inserts it into a new list. Therefore, execution time and additional memory both increase linearly with the input size.
+
+Program 11: Reversing an Array In-Place
+
+
+def reverse_values(values):
+left_index = 0
+right_index = len(values) - 1
+
+while left_index < right_index:
+values[left_index], values[right_index] = values[right_index], values[left_index]
+left_index += 1
+right_index -= 1
+
+return values
+
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Explanation: Two pointers move toward each other while swapping elements. The entire array is processed in linear time. Since the original array is modified directly, no additional list is needed.
+
+Program 12: Factorial Using Recursion
+
+
+def calculate_factorial(value):
+if value <= 1:
+return 1
+previous_result = calculate_factorial(value - 1)
+return value * previous_result
+
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Explanation: The function makes one recursive call for every decreasing value until it reaches the base condition. All pending calls remain in the recursion stack, resulting in linear space usage.
+
+Program 13: Fibonacci Series Using Recursion
+
+
+def fibonacci_value(index):
+if index <= 1:
+return index
+previous = fibonacci_value(index - 1)
+before_previous = fibonacci_value(index - 2)
+return previous + before_previous
+
+
+Time Complexity: O(2ⁿ)
+Space Complexity: O(n)
+
+Explanation: Every non-base recursive call generates two additional calls, causing exponential growth in execution time. However, the maximum depth of the active recursion stack is proportional to n.
+
+Program 14: Counting Pairs Having a Given Sum
+
+
+def count_matching_pairs(numbers, desired_sum):
+earlier_values = set()
+pair_count = 0
+
+for value in numbers:
+needed_value = desired_sum - value
+if needed_value in earlier_values:
+pair_count += 1
+earlier_values.add(value)
+
+return pair_count
+
+
+Time Complexity: O(n) on average
+Space Complexity: O(n)
+
+Explanation: The array is traversed only once. Set insertion and searching take constant time on average. In the worst case, the set can store all n elements, resulting in linear space complexity.
+
+Program 15: Generating All Possible Subsets
+
+
+def show_subsets(elements):
+total_elements = len(elements)
+
+for mask in range(1 << total_elements):
+current_subset = []
+for bit_position in range(total_elements):
+if mask & (1 << bit_position):
+current_subset.append(elements[bit_position])
+print(current_subset)
+
+
+Time Complexity: O(n × 2ⁿ)
+Auxiliary Space Complexity: O(n)
+
+Explanation: An array containing n elements can generate 2ⁿ different subsets. Each subset requires checking n positions, resulting in O(n × 2ⁿ) execution time. The temporary subset requires at most O(n) additional space.
+
+Program 16: Merging Two Sorted Arrays
+
+
+def combine_sorted_lists(first_list, second_list):
+combined = []
+first_pos = 0
+second_pos = 0
+
+while first_pos < len(first_list) and second_pos < len(second_list):
+if first_list[first_pos] <= second_list[second_pos]:
+combined.append(first_list[first_pos])
+first_pos += 1
+else:
+combined.append(second_list[second_pos])
+second_pos += 1
+
+combined.extend(first_list[first_pos:])
+combined.extend(second_list[second_pos:])
+
+return combined
+
+
+Time Complexity: O(n + m)
+Space Complexity: O(n + m)
+
+Explanation: Each element from both arrays is processed once while comparing and merging them. The resulting list stores all elements from both arrays, so the memory requirement is also O(n + m).
+
+Program 17: Checking Whether a String Is a Palindrome
+
+
+def check_palindrome(text):
+reversed_text = text[::-1]
+return text == reversed_text
+
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Explanation: Reversing the string requires visiting its characters, which takes linear time. A separate reversed string is created in memory, resulting in linear space complexity.
+
+Program 18: Converting a Matrix into a Single List
+
+
+def convert_to_list(table):
+values = []
+
+for current_row in table:
+for entry in current_row:
+values.append(entry)
+
+return values
+
+
+Time Complexity: O(m × n)
+Space Complexity: O(m × n)
+
+Explanation: The nested loops visit every element of the matrix containing m rows and n columns. Since all elements are copied into a new list, both time and space complexity are O(m × n).
+
+Program 19: Calculating Power Using Recursion
+
+def calculate_power(base_value, exponent):
+if exponent == 0:
+return 1
+return base_value * calculate_power(base_value, exponent - 1)
+
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Explanation: The exponent decreases by one during every recursive call until it reaches zero. Therefore, the function makes a linear number of calls, and the recursion stack also requires linear space.
+
+Program 20: Fast Power Calculation
+
+
+def efficient_power(base_value, exponent):
+if exponent == 0:
+return 1
+
+partial = efficient_power(base_value, exponent // 2)
+
+if exponent % 2 == 0:
+return partial * partial
+
+return partial * partial * base_value
+
+
+Time Complexity: O(log n)
+Space Complexity: O(log n)
+
+Explanation: Instead of decreasing the exponent by one, the algorithm divides it by two in each recursive step. This reduces the number of calls significantly. The recursion stack also grows logarithmically.
+
+Program 21: Checking Common Elements in Two Arrays
+
+
+def share_an_element(first_group, second_group):
+for first_value in first_group:
+for second_value in second_group:
+if first_value == second_value:
+return True
+return False
+
+
+Time Complexity: O(n × m)
+Space Complexity: O(1)
+
+Explanation: Every element of the first array may need to be compared with every element of the second array. In the worst case, this results in n × m comparisons. Only loop variables are used, so extra space is constant.
+
+Program 22: Creating a Frequency Dictionary
+
+
+def make_frequency_table(values):
+frequency = {}
+
+for item in values:
+if item in frequency:
+frequency[item] += 1
+else:
+frequency[item] = 1
+
+return frequency
+
+
+Time Complexity: O(n) on average
+Space Complexity: O(n)
+
+Explanation: The program traverses the array once and updates the frequency dictionary for each element. Dictionary operations take constant time on average. If every element is unique, the dictionary may contain n entries, requiring linear space.

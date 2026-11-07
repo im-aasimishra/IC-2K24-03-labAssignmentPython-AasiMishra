@@ -6,6 +6,7 @@ print("Python"[1:4])
 print("Hi\tThere\nBye")
 
 # Output:
+#(base) aasi@acer-aspire-lite:~/Lab-01$ python3 SectionB.py
 # 13
 # 5
 # True

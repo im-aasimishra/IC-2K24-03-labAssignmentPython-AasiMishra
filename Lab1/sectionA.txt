@@ -1,0 +1,13 @@
+1. The input() function always returns a value of type string (str).
+
+2. We use the type() function to check the data type of a variable.
+
+3. To convert a string into an integer, we use int(), and to convert it into a decimal number, we use float().
+
+4. In Python, ** is used for exponentiation (power), whereas // is used for floor division.
+
+5. The % symbol is known as the modulus operator, which returns the remainder after division.
+
+6. A single-line comment in Python begins with the # symbol.
+
+7. One rule for naming variables: A variable name must not begin with a digit (0–9).
